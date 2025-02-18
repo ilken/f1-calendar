@@ -2,6 +2,9 @@
 
 A modern Formula 1 race calendar for the 2025 season with timezone support and parallax effects.
 
+![localhost_3000_(iPad Pro)](https://github.com/user-attachments/assets/0f1652b7-2a79-4981-816c-34ae2f426dfb)
+
+
 ## Features
 - 🏎️ Complete 2025 F1 race schedule
 - 🌍 Automatic timezone detection and conversion
