@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://f1calendar.i14u.dev/sitemap.xml 
