@@ -2,6 +2,7 @@
 import { RaceCalendar } from '@/components/RaceCalendar';
 import { TimezoneSelector } from '@/components/TimezoneSelector';
 import { Provider } from 'jotai';
+import { RaceCountdown } from '@/components/RaceCountdown';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
               </p>
             </header>
 
+            <RaceCountdown />
             <TimezoneSelector />
             <RaceCalendar />
           </main>
