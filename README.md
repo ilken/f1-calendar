@@ -3,7 +3,7 @@
 A modern Formula 1 race calendar for the 2025 season with timezone support and parallax effects.
 
 ## Demo
-Check out the live demo: [F1 2025 Calendar](https://f1-calendar-50qrklwuy-team-i14u.vercel.app/)
+Check out the live demo: [F1 2025 Calendar](https://f1-calendar-one.vercel.app/)
 
 ![localhost_3000_(iPad Pro)](https://github.com/user-attachments/assets/0f1652b7-2a79-4981-816c-34ae2f426dfb)
 
