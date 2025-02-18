@@ -42,9 +42,9 @@ describe('TimezoneSelector', () => {
     const options = screen.getAllByRole('option');
     expect(options.length).toBeGreaterThan(0);
     
-    // Check if timezones are formatted correctly
+    // Updated regex to match "Africa/Porto-Novo (+01:00)"
     options.forEach(option => {
-      expect(option.textContent).toMatch(/^[\w\/]+ \([+-]\d{2}:\d{2}\)$/);
+      expect(option.textContent).toMatch(/^[\w\/\-]+ \([+-]\d{2}:\d{2}\)$/);
     });
   });
 }); 

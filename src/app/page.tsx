@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Provider>
       <div className="min-h-screen flex flex-col">
-        <div className="parallax-container" aria-hidden="true">
+        <div className="parallax-container" aria-hidden="true" data-testid="parallax-container">
           <div className="parallax-image" />
         </div>
         <div className="content-overlay flex flex-col flex-grow">
