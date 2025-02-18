@@ -1,9 +1,8 @@
 'use client';
 
-import { Select } from '@mantine/core';
+import { timezoneAtom } from '@/atoms/timezone';
 import { format, toZonedTime } from 'date-fns-tz';
 import { useAtom } from 'jotai';
-import { timezoneAtom } from '@/atoms/timezone';
 
 // Generate timezone options
 const timezones = Intl.supportedValuesOf('timeZone').map(tz => ({
