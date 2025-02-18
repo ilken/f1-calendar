@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import "./globals.css";
 import { Lato } from 'next/font/google';
+import { siteConfig } from '@/config/site.config';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +23,12 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://f1-calendar-one.vercel.app'),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: 'F1 2025 Race Calendar | Formula 1 Grand Prix Schedule',
     template: '%s | F1 2025 Calendar'
   },
-  description: 'View the complete 2025 Formula 1 race calendar with all F1 Grand Prix dates, times and circuits. Customizable timezone support for global F1 fans.',
+  description: siteConfig.description,
   keywords: ['F1', 'Formula 1', '2025 Calendar', 'F1 Schedule', 'Grand Prix', 'Race Calendar', 'Formula One'],
   authors: [{ name: 'i14u' }],
   creator: 'i14u',
@@ -56,6 +57,16 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg']
   },
   manifest: '/site.webmanifest',
+  themeColor: siteConfig.themeColor,
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: siteConfig.name
+  },
+  applicationName: siteConfig.name,
+  formatDetection: {
+    telephone: false
+  },
   robots: {
     index: true,
     follow: true,

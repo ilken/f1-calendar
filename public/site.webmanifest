@@ -1,11 +1,15 @@
 {
-  "name": "F1 2025 Race Calendar",
+  "name": "F1 2025 Calendar",
   "short_name": "F1 Calendar",
   "description": "Formula 1 2025 Race Calendar with customizable timezones",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
+  "orientation": "portrait",
+  "display_override": ["window-controls-overlay"],
   "background_color": "#000000",
   "theme_color": "#dc2626",
+  "categories": ["sports", "racing"],
   "icons": [
     {
       "src": "/icon-192.png",
@@ -18,6 +22,20 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
 }

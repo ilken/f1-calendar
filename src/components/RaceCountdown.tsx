@@ -5,7 +5,7 @@ import { CALENDAR_DATA } from '@/data/calendar.data';
 import { useAtomValue } from 'jotai';
 import { timezoneAtom } from '@/atoms/timezone';
 import { formatInTimeZone } from 'date-fns-tz';
-import { differenceInSeconds, intervalToDuration } from 'date-fns';
+import { differenceInSeconds, intervalToDuration, Duration } from 'date-fns';
 
 export function RaceCountdown() {
   const selectedTimezone = useAtomValue(timezoneAtom);
