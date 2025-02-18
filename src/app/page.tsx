@@ -12,7 +12,7 @@ export default function Home() {
           <div className="parallax-image" />
         </div>
         <div className="content-overlay flex flex-col flex-grow">
-          <main className="p-8 flex-grow" id="main-content">
+          <main className="p-4 lg:p-8 flex-grow" id="main-content">
             <header className="mb-12">
               <h1 className="text-5xl font-bold mb-2">F1 Schedule 2025</h1>
               <p className="text-gray-400">
