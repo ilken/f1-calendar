@@ -1,5 +1,6 @@
 {
   "name": "f1-calendar",
+  "description": "A modern Formula 1 race calendar for the 2025 season with timezone support.",
   "version": "0.1.0",
   "private": true,
   "engines": {

@@ -22,40 +22,50 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "F1 2025 Race Calendar | Formula 1 Grand Prix Schedule",
-  description: "View the complete 2025 Formula 1 race calendar with all F1 Grand Prix dates, times and circuits. Customizable timezone support for global F1 fans.",
-  keywords: "F1, Formula 1, 2025 Calendar, F1 Schedule, Grand Prix, Race Calendar",
-  authors: [{ name: "i14u" }],
+  metadataBase: new URL('https://f1-calendar-one.vercel.app'),
+  title: {
+    default: 'F1 2025 Race Calendar | Formula 1 Grand Prix Schedule',
+    template: '%s | F1 2025 Calendar'
+  },
+  description: 'View the complete 2025 Formula 1 race calendar with all F1 Grand Prix dates, times and circuits. Customizable timezone support for global F1 fans.',
+  keywords: ['F1', 'Formula 1', '2025 Calendar', 'F1 Schedule', 'Grand Prix', 'Race Calendar', 'Formula One'],
+  authors: [{ name: 'i14u' }],
+  creator: 'i14u',
+  publisher: 'i14u',
   openGraph: {
-    title: "F1 2025 Race Calendar | Formula 1 Grand Prix Schedule",
-    description: "Complete 2025 Formula 1 race calendar with customizable timezones",
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://f1-calendar-one.vercel.app',
+    title: 'F1 2025 Race Calendar | Formula 1 Grand Prix Schedule',
+    description: 'Complete 2025 Formula 1 race calendar with customizable timezones',
+    siteName: 'F1 2025 Calendar',
     images: [
       {
-        url: "/og-image.jpg", // You'll need to add this image
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: "F1 2025 Calendar Preview"
+        alt: 'F1 2025 Calendar Preview'
       }
     ]
   },
   twitter: {
-    card: "summary_large_image",
-    title: "F1 2025 Race Calendar",
-    description: "Complete 2025 Formula 1 race calendar with customizable timezones",
+    card: 'summary_large_image',
+    title: 'F1 2025 Race Calendar',
+    description: 'Complete 2025 Formula 1 race calendar with customizable timezones',
+    creator: '@i14u',
+    images: ['/og-image.jpg']
   },
-  manifest: "/site.webmanifest",
-  icons: {
-    apple: [
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' }
-    ],
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' }
-    ]
+  manifest: '/site.webmanifest',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   }
 };
 
