@@ -11,7 +11,7 @@ export function RaceCountdown() {
   const selectedTimezone = useAtomValue(timezoneAtom);
   const [timeLeft, setTimeLeft] = useState<Duration>({});
 
-  const nextRace = CALENDAR_DATA.find(race => {
+  const nextRace = CALENDAR_DATA.find((race) => {
     return new Date(race.date) > new Date();
   });
 
@@ -22,7 +22,7 @@ export function RaceCountdown() {
       const now = new Date();
       const raceDate = new Date(nextRace.date);
       const diffInSeconds = differenceInSeconds(raceDate, now);
-      
+
       if (diffInSeconds <= 0) {
         clearInterval(timer);
         return;
@@ -30,7 +30,7 @@ export function RaceCountdown() {
 
       const duration = intervalToDuration({
         start: now,
-        end: raceDate
+        end: raceDate,
       });
 
       setTimeLeft(duration);
@@ -42,20 +42,20 @@ export function RaceCountdown() {
   if (!nextRace || !timeLeft.days) return null;
 
   return (
-    <div className="mb-8 p-6 card rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Next Race</h2>
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+    <div className="card mb-8 rounded-lg p-6">
+      <h2 className="mb-4 text-xl font-bold">Next Race</h2>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center gap-2">
           <span className="text-4xl">{nextRace.countryFlag}</span>
           <div>
-            <h3 className="font-bold text-lg">{nextRace.name}</h3>
+            <h3 className="text-lg font-bold">{nextRace.name}</h3>
             <time className="text-sm text-gray-400">
               {formatInTimeZone(new Date(nextRace.date), selectedTimezone, 'PPP p')}
             </time>
           </div>
         </div>
-        
-        <div className="grid grid-cols-4 gap-4 text-center min-w-[300px]">
+
+        <div className="grid min-w-[300px] grid-cols-4 gap-4 text-center">
           <div>
             <div className="text-2xl font-bold">{timeLeft.days || '0'}</div>
             <div className="text-xs text-gray-400">DAYS</div>
@@ -76,4 +76,4 @@ export function RaceCountdown() {
       </div>
     </div>
   );
-} 
+}

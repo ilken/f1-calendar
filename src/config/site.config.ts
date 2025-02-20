@@ -4,5 +4,5 @@ export const siteConfig = {
   description: 'Formula 1 2025 Race Calendar with customizable timezones',
   url: 'https://f1-calendar-one.vercel.app',
   themeColor: '#dc2626',
-  backgroundColor: '#000000'
-}; 
+  backgroundColor: '#000000',
+};

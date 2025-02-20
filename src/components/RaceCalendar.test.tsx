@@ -13,7 +13,7 @@ describe('RaceCalendar', () => {
 
   it('renders all race cards', () => {
     render(<RaceCalendar />);
-    
+
     // Check if all races are rendered
     CALENDAR_DATA.forEach((race) => {
       expect(screen.getByText(race.name)).toBeInTheDocument();
@@ -23,41 +23,29 @@ describe('RaceCalendar', () => {
 
   it('opens race URL in new tab when clicked', () => {
     render(<RaceCalendar />);
-    
+
     const firstRace = CALENDAR_DATA[0];
     const raceCard = screen.getByRole('button', { name: new RegExp(firstRace.name) });
-    
+
     fireEvent.click(raceCard);
-    
-    expect(mockOpen).toHaveBeenCalledWith(
-      firstRace.url,
-      '_blank',
-      'noopener,noreferrer'
-    );
+
+    expect(mockOpen).toHaveBeenCalledWith(firstRace.url, '_blank', 'noopener,noreferrer');
   });
 
   it('handles keyboard navigation', () => {
     render(<RaceCalendar />);
-    
+
     const firstRace = CALENDAR_DATA[0];
     const raceCard = screen.getByRole('button', { name: new RegExp(firstRace.name) });
-    
+
     // Test Enter key
     fireEvent.keyDown(raceCard, { key: 'Enter' });
-    expect(mockOpen).toHaveBeenCalledWith(
-      firstRace.url,
-      '_blank',
-      'noopener,noreferrer'
-    );
-    
+    expect(mockOpen).toHaveBeenCalledWith(firstRace.url, '_blank', 'noopener,noreferrer');
+
     mockOpen.mockClear();
-    
+
     // Test Space key
     fireEvent.keyDown(raceCard, { key: ' ' });
-    expect(mockOpen).toHaveBeenCalledWith(
-      firstRace.url,
-      '_blank',
-      'noopener,noreferrer'
-    );
+    expect(mockOpen).toHaveBeenCalledWith(firstRace.url, '_blank', 'noopener,noreferrer');
   });
-}); 
+});

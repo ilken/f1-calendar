@@ -3,12 +3,13 @@
 A modern Formula 1 race calendar for the 2025 season with timezone support.
 
 ## Demo
+
 Check out the live demo: [F1 2025 Calendar](https://f1-calendar-one.vercel.app/)
 
 ![localhost_3000_(iPad Pro)](https://github.com/user-attachments/assets/0f1652b7-2a79-4981-816c-34ae2f426dfb)
 
-
 ## Features
+
 - 🏎️ Complete 2025 F1 race schedule
 - 🌍 Automatic timezone detection and conversion
 - 🕒 Global timezone selector
@@ -19,6 +20,7 @@ Check out the live demo: [F1 2025 Calendar](https://f1-calendar-one.vercel.app/)
 - 📱 PWA support
 
 ## Tech Stack
+
 - Next.js 14 with App Router
 - TypeScript
 - Tailwind CSS
@@ -59,6 +61,7 @@ npm run test:coverage
 ```
 
 ## Project Structure
+
 ```
 ├── src/
 │   ├── app/             # Next.js app router
@@ -72,6 +75,7 @@ npm run test:coverage
 ```
 
 ## Scripts
+
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
@@ -80,15 +84,19 @@ npm run test:coverage
 - `npm run format` - Format code with Prettier
 
 ## Environment Variables
+
 None required for basic setup.
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
+
 MIT
 
 ## Author
+
 i14u
 
 ## Learn More
