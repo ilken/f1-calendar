@@ -33,16 +33,16 @@ Check out the live demo: [F1 2025 Calendar](https://f1-calendar-one.vercel.app/)
 
 ```bash
 # Install dependencies
-npm install
+yarn install
 
 # Run development server
-npm run dev
+yarn dev
 
 # Run tests
-npm test
+yarn test
 
 # Build for production
-npm run build
+yarn build
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -51,13 +51,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ```bash
 # Run tests
-npm test
+yarn test
 
 # Run tests in watch mode
-npm run test:watch
+yarn test:watch
 
 # Generate coverage report
-npm run test:coverage
+yarn test:coverage
 ```
 
 ## Project Structure
@@ -76,12 +76,12 @@ npm run test:coverage
 
 ## Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm test` - Run tests
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn start` - Start production server
+- `yarn test` - Run tests
+- `yarn lint` - Run ESLint
+- `yarn format` - Format code with Prettier
 
 ## Environment Variables
 
