@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "yarn next dev --turbopack",
-    "build": "next build",
+    "build": "yarn lint && yarn type-check && next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
