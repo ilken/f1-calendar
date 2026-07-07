@@ -1,18 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import Home from './page';
+import { SEASON } from '@/data/calendar.data';
 
 describe('Home', () => {
   it('renders the header', () => {
     render(<Home />);
 
-    expect(screen.getByText('F1 Schedule 2025')).toBeInTheDocument();
+    expect(screen.getByText(`F1 Schedule ${SEASON}`)).toBeInTheDocument();
     expect(screen.getByText(/FIA FORMULA ONE WORLD CHAMPIONSHIP/)).toBeInTheDocument();
   });
 
   it('renders the footer', () => {
     render(<Home />);
 
-    expect(screen.getByText(/© 2025 i14u/)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(`© ${SEASON} i14u`))).toBeInTheDocument();
   });
 
   it('includes main landmark', () => {

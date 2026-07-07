@@ -5,8 +5,9 @@
 :root {
   --background: transparent;
   --foreground: #ffffff;
-  --primary: #dc2626;
-  --primary-dark: #991b1b;
+  --primary: #ff2800; /* Rosso corsa */
+  --primary-dark: #a61b00;
+  --accent: #ffd800; /* Giallo Modena */
   --text-secondary: #9ca3af; /* For secondary text */
 }
 

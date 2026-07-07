@@ -3,6 +3,7 @@ import { RaceCalendar } from '@/components/RaceCalendar';
 import { TimezoneSelector } from '@/components/TimezoneSelector';
 import { Provider } from 'jotai';
 import { RaceCountdown } from '@/components/RaceCountdown';
+import { SEASON } from '@/data/calendar.data';
 
 export default function Home() {
   return (
@@ -14,9 +15,12 @@ export default function Home() {
         <div className="content-overlay flex flex-grow flex-col">
           <main className="flex-grow p-4 lg:p-8" id="main-content">
             <header className="mb-12">
-              <h1 className="mb-2 text-5xl font-bold">F1 Schedule 2025</h1>
+              <h1 className="mb-2 text-5xl font-bold">F1 Schedule {SEASON}</h1>
               <p className="text-gray-400">
-                F1 2025 FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR
+                F1 {SEASON} FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR
+              </p>
+              <p className="text-accent mt-1 text-xs font-black uppercase tracking-[0.3em]">
+                Forza Ferrari
               </p>
             </header>
 
@@ -26,7 +30,7 @@ export default function Home() {
           </main>
 
           <footer className="border-t border-gray-800 p-8 text-center text-sm text-gray-400">
-            <p>© 2025 i14u. All rights reserved.</p>
+            <p>© {SEASON} i14u. All rights reserved.</p>
           </footer>
         </div>
       </div>
