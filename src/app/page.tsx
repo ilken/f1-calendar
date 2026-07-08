@@ -4,6 +4,7 @@ import { TimezoneSelector } from '@/components/TimezoneSelector';
 import { Provider } from 'jotai';
 import { RaceCountdown } from '@/components/RaceCountdown';
 import { SeasonProgress } from '@/components/SeasonProgress';
+import { AddSeasonToCalendarButton } from '@/components/AddToCalendar';
 import { SEASON } from '@/data/calendar.data';
 
 export default function Home() {
@@ -27,7 +28,10 @@ export default function Home() {
 
             <RaceCountdown />
             <SeasonProgress />
-            <TimezoneSelector />
+            <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <TimezoneSelector />
+              <AddSeasonToCalendarButton />
+            </div>
             <RaceCalendar />
           </main>
 

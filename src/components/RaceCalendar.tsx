@@ -7,6 +7,7 @@ import { CALENDAR_DATA } from '@/data/calendar.data';
 import { useAtomValue } from 'jotai';
 import { timezoneAtom } from '@/atoms/timezone';
 import { getNextRace, isRaceFinished, isRaceLive } from '@/lib/season';
+import { AddRaceToCalendarButton } from '@/components/AddToCalendar';
 
 export function RaceCalendar() {
   const selectedTimezone = useAtomValue(timezoneAtom);
@@ -81,6 +82,9 @@ export function RaceCalendar() {
               >
                 {formatRaceDate(race.date)}
               </time>
+              <div>
+                <AddRaceToCalendarButton race={race} />
+              </div>
             </div>
 
             <div className="relative h-48 bg-transparent">
