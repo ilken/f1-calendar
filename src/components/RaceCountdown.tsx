@@ -84,7 +84,7 @@ export function RaceCountdown() {
         </div>
 
         {lightsOut ? (
-          <div className="lights-out-banner text-primary text-xl font-black uppercase lg:text-2xl">
+          <div className="lights-out-banner text-xl font-black uppercase text-primary lg:text-2xl">
             Lights out and away we go!
           </div>
         ) : (

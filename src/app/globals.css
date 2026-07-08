@@ -103,8 +103,88 @@ body {
   }
 }
 
+/* Season progress track */
+.season-track {
+  position: relative;
+  height: 14px;
+  margin-top: 1.5rem;
+  border-radius: 9999px;
+  background:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.35) 0 14px, transparent 14px 32px)
+      center / 100% 2px no-repeat,
+    #1c1c22;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.season-track-done {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 9999px;
+  background: linear-gradient(to right, rgba(255, 40, 0, 0.15), rgba(255, 40, 0, 0.45));
+}
+
+.season-track-finish {
+  position: absolute;
+  top: -3px;
+  right: -1px;
+  width: 10px;
+  height: 20px;
+  border-radius: 2px;
+  background: repeating-conic-gradient(#ffffff 0% 25%, #0b0b0f 0% 50%) 0 0 / 5px 5px;
+}
+
+.season-car {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -60%);
+  filter: drop-shadow(0 0 6px rgba(255, 40, 0, 0.6));
+}
+
+.ferrari-car {
+  animation: car-bob 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes car-bob {
+  from {
+    transform: translateY(-0.5px);
+  }
+  to {
+    transform: translateY(0.5px);
+  }
+}
+
+/* Race card states */
+.next-race-card {
+  border-color: var(--primary) !important;
+  animation: next-race-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes next-race-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 40, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px 3px rgba(255, 40, 0, 0.45);
+  }
+}
+
+.race-finished {
+  opacity: 0.55;
+}
+
+.race-finished img {
+  filter: grayscale(0.85);
+}
+
+.race-finished:hover {
+  opacity: 0.85;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .lights-out-banner {
+  .lights-out-banner,
+  .ferrari-car,
+  .next-race-card {
     animation: none;
   }
 }

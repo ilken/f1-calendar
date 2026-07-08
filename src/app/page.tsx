@@ -3,6 +3,7 @@ import { RaceCalendar } from '@/components/RaceCalendar';
 import { TimezoneSelector } from '@/components/TimezoneSelector';
 import { Provider } from 'jotai';
 import { RaceCountdown } from '@/components/RaceCountdown';
+import { SeasonProgress } from '@/components/SeasonProgress';
 import { SEASON } from '@/data/calendar.data';
 
 export default function Home() {
@@ -19,12 +20,13 @@ export default function Home() {
               <p className="text-gray-400">
                 F1 {SEASON} FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR
               </p>
-              <p className="text-accent mt-1 text-xs font-black uppercase tracking-[0.3em]">
+              <p className="mt-1 text-xs font-black uppercase tracking-[0.3em] text-accent">
                 Forza Ferrari
               </p>
             </header>
 
             <RaceCountdown />
+            <SeasonProgress />
             <TimezoneSelector />
             <RaceCalendar />
           </main>

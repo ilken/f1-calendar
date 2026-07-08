@@ -21,7 +21,7 @@ describe('RaceCountdown', () => {
     expect(screen.getByText('Circuit de Spa-Francorchamps')).toBeInTheDocument();
     expect(screen.getByTestId('start-lights')).toHaveAttribute(
       'aria-label',
-      '2 of 5 start lights lit',
+      '2 of 5 start lights lit'
     );
     expect(screen.getByText('DAYS')).toBeInTheDocument();
   });
@@ -33,7 +33,7 @@ describe('RaceCountdown', () => {
 
     expect(screen.getByTestId('start-lights')).toHaveAttribute(
       'aria-label',
-      '5 of 5 start lights lit',
+      '5 of 5 start lights lit'
     );
     // 30:00 -> 29:59 after one tick
     expect(screen.getByText('30')).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe('RaceCountdown', () => {
     expect(screen.getByText(/lights out and away we go/i)).toBeInTheDocument();
     expect(screen.getByTestId('start-lights')).toHaveAttribute(
       'aria-label',
-      'Lights out — race in progress',
+      'Lights out — race in progress'
     );
     expect(screen.queryByText('DAYS')).not.toBeInTheDocument();
   });

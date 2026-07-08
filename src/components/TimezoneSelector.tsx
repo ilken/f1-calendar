@@ -22,7 +22,7 @@ export function TimezoneSelector() {
         id="timezone-select"
         value={selectedTimezone}
         onChange={(e) => setSelectedTimezone(e.target.value)}
-        className="focus:border-primary focus:ring-primary w-full max-w-md rounded-lg border border-gray-700 bg-black/30 p-3 text-lg text-white backdrop-blur-sm transition-colors hover:border-gray-600 focus:ring-1"
+        className="w-full max-w-md rounded-lg border border-gray-700 bg-black/30 p-3 text-lg text-white backdrop-blur-sm transition-colors hover:border-gray-600 focus:border-primary focus:ring-1 focus:ring-primary"
         aria-label="Timezone selector"
       >
         {timezones.map((tz) => (
