@@ -1,93 +1,112 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { CALENDAR_DATA } from '@/data/calendar.data';
 import { useAtomValue } from 'jotai';
 import { timezoneAtom } from '@/atoms/timezone';
 import { formatInTimeZone } from 'date-fns-tz';
-import { differenceInSeconds, intervalToDuration, Duration } from 'date-fns';
+import { intervalToDuration } from 'date-fns';
+import { getNextRace, getStartLightsState } from '@/lib/season';
+
+const GANTRY = [1, 2, 3, 4, 5];
+
+function StartLights({ lit, lightsOut }: { lit: number; lightsOut: boolean }) {
+  return (
+    <div
+      className="flex gap-2"
+      role="img"
+      aria-label={lightsOut ? 'Lights out — race in progress' : `${lit} of 5 start lights lit`}
+      data-testid="start-lights"
+    >
+      {GANTRY.map((n) => (
+        <span
+          key={n}
+          data-testid={`start-light-${n}`}
+          data-lit={!lightsOut && n <= lit}
+          className={`start-light ${!lightsOut && n <= lit ? 'start-light-on' : ''}`}
+        />
+      ))}
+    </div>
+  );
+}
 
 export function RaceCountdown() {
   const selectedTimezone = useAtomValue(timezoneAtom);
-  const [timeLeft, setTimeLeft] = useState<Duration>({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [now, setNow] = useState<Date | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const nextRace = CALENDAR_DATA.find((race) => {
-    return new Date(race.date) > new Date();
-  });
-
   useEffect(() => {
-    if (!nextRace) return;
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      setIsVisible(true);
-    }, 500); // Short delay for smoother transition
-
-    const countdownTimer = setInterval(() => {
-      const now = new Date();
-      const raceDate = new Date(nextRace.date);
-      const diffInSeconds = differenceInSeconds(raceDate, now);
-
-      if (diffInSeconds <= 0) {
-        clearInterval(countdownTimer);
-        return;
-      }
-
-      const duration = intervalToDuration({
-        start: now,
-        end: raceDate,
-      });
-
-      setTimeLeft(duration);
-    }, 1000);
+    setNow(new Date());
+    const countdownTimer = setInterval(() => setNow(new Date()), 1000);
+    const fadeTimer = setTimeout(() => setIsVisible(true), 500); // Short delay for smoother transition
 
     return () => {
-      clearTimeout(timer);
       clearInterval(countdownTimer);
+      clearTimeout(fadeTimer);
     };
-  }, [nextRace]);
+  }, []);
 
-  if (!nextRace || !timeLeft.days) return <CountdownSkeleton />;
-  if (isLoading) return <CountdownSkeleton />;
+  if (!now) return <CountdownSkeleton />;
+
+  const nextRace = getNextRace(now);
+  if (!nextRace) {
+    return (
+      <div className="card mb-8 rounded-lg p-6">
+        <h2 className="text-xl font-bold">Season complete 🏁</h2>
+        <p className="text-sm text-gray-400">See you next year!</p>
+      </div>
+    );
+  }
+
+  const raceDate = new Date(nextRace.date);
+  const { lit, lightsOut } = getStartLightsState(nextRace.date, now);
+  const timeLeft = raceDate > now ? intervalToDuration({ start: now, end: raceDate }) : {};
 
   return (
-    <div 
+    <div
       className={`card mb-8 rounded-lg p-6 transition-all duration-500 ease-out ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
       }`}
     >
-      <h2 className="mb-4 text-xl font-bold">Next Race</h2>
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-xl font-bold">{lightsOut ? 'Race Day' : 'Next Race'}</h2>
+        <StartLights lit={lit} lightsOut={lightsOut} />
+      </div>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center gap-2">
           <span className="text-4xl">{nextRace.countryFlag}</span>
           <div>
             <h3 className="text-lg font-bold">{nextRace.name}</h3>
+            <p className="text-xs text-gray-400">{nextRace.circuit}</p>
             <time className="text-sm text-gray-400">
-              {formatInTimeZone(new Date(nextRace.date), selectedTimezone, 'PPP p')}
+              {formatInTimeZone(raceDate, selectedTimezone, 'PPP p')}
             </time>
           </div>
         </div>
 
-        <div className="grid min-w-[300px] grid-cols-4 gap-4 text-center">
-          <div>
-            <div className="text-2xl font-bold">{timeLeft.days || '0'}</div>
-            <div className="text-xs text-gray-400">DAYS</div>
+        {lightsOut ? (
+          <div className="lights-out-banner text-xl font-black uppercase text-primary lg:text-2xl">
+            Lights out and away we go!
           </div>
-          <div>
-            <div className="text-2xl font-bold">{timeLeft.hours || '0'}</div>
-            <div className="text-xs text-gray-400">HOURS</div>
+        ) : (
+          <div className="grid min-w-[300px] grid-cols-4 gap-4 text-center">
+            <div>
+              <div className="text-2xl font-bold">{timeLeft.days || '0'}</div>
+              <div className="text-xs text-gray-400">DAYS</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold">{timeLeft.hours || '0'}</div>
+              <div className="text-xs text-gray-400">HOURS</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold">{timeLeft.minutes || '00'}</div>
+              <div className="text-xs text-gray-400">MINUTES</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold">{timeLeft.seconds || '00'}</div>
+              <div className="text-xs text-gray-400">SECONDS</div>
+            </div>
           </div>
-          <div>
-            <div className="text-2xl font-bold">{timeLeft.minutes || '00'}</div>
-            <div className="text-xs text-gray-400">MINUTES</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold">{timeLeft.seconds || '00'}</div>
-            <div className="text-xs text-gray-400">SECONDS</div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

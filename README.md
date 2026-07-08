@@ -1,27 +1,31 @@
-# F1 2025 Race Calendar
+# F1 2026 Race Calendar
 
-A modern Formula 1 race calendar for the 2025 season with timezone support.
+A modern, Ferrari-flavoured Formula 1 race calendar for the 2026 season with timezone support.
 
 ## Demo
 
-Check out the live demo: [F1 2025 Calendar](https://f1-calendar-one.vercel.app/)
+Check out the live demo: [F1 2026 Calendar](https://f1-calendar-one.vercel.app/)
 
 ![localhost_3000_(iPad Pro)](https://github.com/user-attachments/assets/0f1652b7-2a79-4981-816c-34ae2f426dfb)
 
 ## Features
 
-- 🏎️ Complete 2025 F1 race schedule
+- 🏎️ Complete 2026 F1 race schedule (22 rounds)
+- 🚦 F1 start-lights countdown — lights come on as the next race approaches
+- 🏁 Season progress track with a Ferrari marker
+- 📅 Add races (or the full season) to your calendar (.ics)
+- ⚡ Sprint weekend badges
 - 🌍 Automatic timezone detection and conversion
 - 🕒 Global timezone selector
 - 📱 Fully responsive design
-- 🌙 Dark mode optimized
+- 🌙 Dark mode optimized, rosso corsa themed
 - 🖼️ Background effects
-- ♿ Accessibility focused
+- ♿ Accessibility focused (respects reduced motion)
 - 📱 PWA support
 
 ## Tech Stack
 
-- Next.js 14 with App Router
+- Next.js 15 with App Router
 - TypeScript
 - Tailwind CSS
 - Jotai for state management

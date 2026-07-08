@@ -9,6 +9,13 @@ window.open = mockOpen;
 describe('RaceCalendar', () => {
   beforeEach(() => {
     mockOpen.mockClear();
+    jest.useFakeTimers();
+    // Mid-season: rounds 1-9 finished, Belgium (round 10) is next
+    jest.setSystemTime(new Date('2026-07-08T12:00:00Z'));
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('renders all race cards', () => {
@@ -25,7 +32,9 @@ describe('RaceCalendar', () => {
     render(<RaceCalendar />);
 
     const firstRace = CALENDAR_DATA[0];
-    const raceCard = screen.getByRole('button', { name: new RegExp(firstRace.name) });
+    const raceCard = screen.getByRole('button', {
+      name: `${firstRace.name} Grand Prix details`,
+    });
 
     fireEvent.click(raceCard);
 
@@ -36,7 +45,9 @@ describe('RaceCalendar', () => {
     render(<RaceCalendar />);
 
     const firstRace = CALENDAR_DATA[0];
-    const raceCard = screen.getByRole('button', { name: new RegExp(firstRace.name) });
+    const raceCard = screen.getByRole('button', {
+      name: `${firstRace.name} Grand Prix details`,
+    });
 
     // Test Enter key
     fireEvent.keyDown(raceCard, { key: 'Enter' });
@@ -47,5 +58,41 @@ describe('RaceCalendar', () => {
     // Test Space key
     fireEvent.keyDown(raceCard, { key: ' ' });
     expect(mockOpen).toHaveBeenCalledWith(firstRace.url, '_blank', 'noopener,noreferrer');
+  });
+
+  it('dims finished races and marks the next one', () => {
+    render(<RaceCalendar />);
+
+    const finished = screen.getByRole('button', { name: 'Australia Grand Prix details' });
+    expect(finished).toHaveClass('race-finished');
+    expect(screen.getAllByText(/🏁 Finished/)).toHaveLength(9);
+
+    const next = screen.getByRole('button', { name: 'Belgium Grand Prix details' });
+    expect(next).toHaveClass('next-race-card');
+    expect(next).not.toHaveClass('race-finished');
+  });
+
+  it('badges the sprint weekends', () => {
+    render(<RaceCalendar />);
+
+    const sprintCount = CALENDAR_DATA.filter((race) => race.isSprint).length;
+    expect(sprintCount).toBe(6);
+    expect(screen.getAllByText(/⚡ SPRINT/)).toHaveLength(sprintCount);
+  });
+
+  it('downloads an ics without triggering the card click', () => {
+    render(<RaceCalendar />);
+
+    const clickSpy = jest.fn();
+    HTMLAnchorElement.prototype.click = clickSpy;
+    URL.createObjectURL = jest.fn(() => 'blob:mock');
+    URL.revokeObjectURL = jest.fn();
+
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Add Belgium Grand Prix to your calendar' })
+    );
+
+    expect(clickSpy).toHaveBeenCalled();
+    expect(mockOpen).not.toHaveBeenCalled();
   });
 });

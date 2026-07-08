@@ -25,14 +25,14 @@ const lato = Lato({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'F1 2025 Race Calendar | Formula 1 Grand Prix Schedule',
-    template: '%s | F1 2025 Calendar',
+    default: 'F1 2026 Race Calendar | Formula 1 Grand Prix Schedule',
+    template: '%s | F1 2026 Calendar',
   },
   description: siteConfig.description,
   keywords: [
     'F1',
     'Formula 1',
-    '2025 Calendar',
+    '2026 Calendar',
     'F1 Schedule',
     'Grand Prix',
     'Race Calendar',
@@ -45,22 +45,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://f1-calendar-one.vercel.app',
-    title: 'F1 2025 Race Calendar | Formula 1 Grand Prix Schedule',
-    description: 'Complete 2025 Formula 1 race calendar with customizable timezones',
-    siteName: 'F1 2025 Calendar',
+    title: 'F1 2026 Race Calendar | Formula 1 Grand Prix Schedule',
+    description: 'Complete 2026 Formula 1 race calendar with customizable timezones',
+    siteName: 'F1 2026 Calendar',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'F1 2025 Calendar Preview',
+        alt: 'F1 2026 Calendar Preview',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'F1 2025 Race Calendar',
-    description: 'Complete 2025 Formula 1 race calendar with customizable timezones',
+    title: 'F1 2026 Race Calendar',
+    description: 'Complete 2026 Formula 1 race calendar with customizable timezones',
     creator: '@i14u',
     images: ['/og-image.jpg'],
   },
@@ -90,13 +90,11 @@ export const metadata: Metadata = {
     icon: [
       { url: '/icons/favicon.ico', sizes: 'any' },
       { url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' }
+      { url: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
-    apple: [
-      { url: '/icons/apple-icon-180.png', sizes: '180x180', type: 'image/png' }
-    ],
-    shortcut: [{ url: '/icons/favicon.ico' }]
-  }
+    apple: [{ url: '/icons/apple-icon-180.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: [{ url: '/icons/favicon.ico' }],
+  },
 };
 
 export default function RootLayout({

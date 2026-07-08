@@ -5,8 +5,9 @@
 :root {
   --background: transparent;
   --foreground: #ffffff;
-  --primary: #dc2626;
-  --primary-dark: #991b1b;
+  --primary: #ff2800; /* Rosso corsa */
+  --primary-dark: #a61b00;
+  --accent: #ffd800; /* Giallo Modena */
   --text-secondary: #9ca3af; /* For secondary text */
 }
 
@@ -56,6 +57,8 @@ body {
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -67,6 +70,146 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
+/* Diagonal light sheen sweeping across on hover */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  left: 125%;
+}
+
 .text-gray-400 {
   color: var(--text-secondary);
+}
+
+/* F1 start-light gantry */
+.start-light {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 9999px;
+  background: #17171c;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.start-light-on {
+  background: var(--primary);
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 12px 2px rgba(255, 40, 0, 0.75);
+}
+
+.lights-out-banner {
+  animation: lights-out-flash 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes lights-out-flash {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.55;
+  }
+}
+
+/* Season progress track */
+.season-track {
+  position: relative;
+  height: 14px;
+  margin-top: 1.5rem;
+  border-radius: 9999px;
+  background:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.35) 0 14px, transparent 14px 32px)
+      center / 100% 2px no-repeat,
+    #1c1c22;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.season-track-done {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 9999px;
+  background: linear-gradient(to right, rgba(255, 40, 0, 0.15), rgba(255, 40, 0, 0.45));
+}
+
+.season-track-finish {
+  position: absolute;
+  top: -3px;
+  right: -1px;
+  width: 10px;
+  height: 20px;
+  border-radius: 2px;
+  background: repeating-conic-gradient(#ffffff 0% 25%, #0b0b0f 0% 50%) 0 0 / 5px 5px;
+}
+
+.season-car {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -60%);
+  filter: drop-shadow(0 0 6px rgba(255, 40, 0, 0.6));
+}
+
+.ferrari-car {
+  animation: car-bob 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes car-bob {
+  from {
+    transform: translateY(-0.5px);
+  }
+  to {
+    transform: translateY(0.5px);
+  }
+}
+
+/* Race card states */
+.next-race-card {
+  border-color: var(--primary) !important;
+  animation: next-race-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes next-race-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 40, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px 3px rgba(255, 40, 0, 0.45);
+  }
+}
+
+.race-finished {
+  opacity: 0.55;
+}
+
+.race-finished img {
+  filter: grayscale(0.85);
+}
+
+.race-finished:hover {
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lights-out-banner,
+  .ferrari-car,
+  .next-race-card,
+  .animate-pulse {
+    animation: none;
+  }
+
+  .card::after {
+    display: none;
+  }
 }
