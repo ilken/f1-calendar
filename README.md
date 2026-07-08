@@ -6,6 +6,8 @@ A modern Formula 1 race calendar for the 2025 season with timezone support.
 
 Check out the live demo: [F1 2025 Calendar](https://f1-calendar-one.vercel.app/)
 
+Test (preview) deployment: [Vercel Preview](https://f1-calendar-git-vercel-react-server-components-717c07-team-i14u.vercel.app)
+
 ![localhost_3000_(iPad Pro)](https://github.com/user-attachments/assets/0f1652b7-2a79-4981-816c-34ae2f426dfb)
 
 ## Features
