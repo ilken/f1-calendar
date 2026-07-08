@@ -70,12 +70,20 @@ export function RaceCalendar() {
                       🏁 Finished
                     </span>
                   )}
+                  {race.isSprint && (
+                    <span className="rounded-full border border-accent px-2 py-0.5 text-xs font-bold text-accent">
+                      ⚡ SPRINT
+                    </span>
+                  )}
                 </div>
                 <span className="text-4xl" role="img" aria-label={`${race.countryFlag} flag`}>
                   {race.countryFlag}
                 </span>
               </div>
-              <h2 className="mb-3 text-2xl font-black leading-tight">{race.name}</h2>
+              <h2 className="mb-1 text-2xl font-black leading-tight">{race.name}</h2>
+              <p className="mb-3 text-sm text-gray-400">
+                {race.circuit} · {race.location}
+              </p>
               <time
                 dateTime={new Date(race.date).toISOString()}
                 className="text-lg font-bold text-primary"

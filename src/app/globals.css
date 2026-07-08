@@ -57,6 +57,8 @@ body {
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -66,6 +68,24 @@ body {
 .card:hover {
   transform: translateY(-2px);
   background: rgba(0, 0, 0, 0.5);
+}
+
+/* Diagonal light sheen sweeping across on hover */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  left: 125%;
 }
 
 .text-gray-400 {
@@ -184,7 +204,12 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .lights-out-banner,
   .ferrari-car,
-  .next-race-card {
+  .next-race-card,
+  .animate-pulse {
     animation: none;
+  }
+
+  .card::after {
+    display: none;
   }
 }

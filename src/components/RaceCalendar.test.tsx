@@ -72,6 +72,14 @@ describe('RaceCalendar', () => {
     expect(next).not.toHaveClass('race-finished');
   });
 
+  it('badges the sprint weekends', () => {
+    render(<RaceCalendar />);
+
+    const sprintCount = CALENDAR_DATA.filter((race) => race.isSprint).length;
+    expect(sprintCount).toBe(6);
+    expect(screen.getAllByText(/⚡ SPRINT/)).toHaveLength(sprintCount);
+  });
+
   it('downloads an ics without triggering the card click', () => {
     render(<RaceCalendar />);
 
